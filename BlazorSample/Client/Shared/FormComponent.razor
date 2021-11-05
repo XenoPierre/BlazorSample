@@ -16,8 +16,11 @@
             <h3>@myModel.ValueThree</h3>
             <InputNumberOnChange @bind-Value="@myModel.ValueThree"></InputNumberOnChange>
 
+            <h3>@myModel.ValueDouble</h3>
+            <input type="number" @bind="@myModel.ValueDouble" @bind:event="oninput"/>
 
-            <input @bind="@myModel.ValueDouble" />
+            <br />
+            <CustomInputFloatBase @bind-Value="@myModel.ValueThree"></CustomInputFloatBase>
         </div>
     </div>
     
@@ -45,5 +48,10 @@
         myModel = new MyModel();
 
         EC = new EditContext(myModel);
+    }
+
+    protected void OnInput()
+    {
+        Console.WriteLine("hallo");
     }
 }

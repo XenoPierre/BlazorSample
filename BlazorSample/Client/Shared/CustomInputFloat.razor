@@ -1,0 +1,10 @@
+﻿@typeparam TNumber
+@inherits CustomInputFloatBase<TNumber>
+
+<input type="number"
+       step="any"
+       @attributes="AdditionalAttributes"
+       class="@CssClass"
+       value="@CurrentValue"
+       @onchange="EventCallback.Factory.CreateBinder<string>(
+        this, __value => CurrentValueAsString = __value, CurrentValueAsString)" />
