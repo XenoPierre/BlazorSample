@@ -1,0 +1,49 @@
+﻿@using System.Globalization
+
+<h3>Culture : @CultureInfo.CurrentCulture</h3>
+
+<EditForm EditContext="@EC">
+    <div class="row">
+        <div class="col">
+            <h3>@myModel.ValueOne</h3>
+            <InputNumber @bind-Value="@myModel.ValueOne"></InputNumber>
+        </div>
+        <div class="col">
+            <h3>@myModel.ValueTwo</h3>
+            <InputNumberOnInput @bind-Value="@myModel.ValueTwo"></InputNumberOnInput>
+        </div>
+        <div class="col">
+            <h3>@myModel.ValueThree</h3>
+            <InputNumberOnChange @bind-Value="@myModel.ValueThree"></InputNumberOnChange>
+
+
+            <input @bind="@myModel.ValueDouble" />
+        </div>
+    </div>
+    
+    <br />
+
+</EditForm>
+@code{
+
+    public EditContext EC { get; set; }
+
+    public class MyModel
+    {
+        public float ValueOne { get; set; }
+        public float ValueTwo { get; set; }
+        public float ValueThree { get; set; }
+
+        public double ValueDouble { get; set; }
+    }
+
+    public MyModel myModel { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        myModel = new MyModel();
+
+        EC = new EditContext(myModel);
+    }
+}
